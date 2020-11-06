@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>自建CDN加速站点 | 天蝎雨</title>
+
+
+    <meta name="keywords" content="天蝎雨,十月份的雨,沐予之枫">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="自建CDN加速站点最近几天都是在优化站点访问速度，现在本站访问速度很快了，对我来说2秒加载完，本章是 关于如何自建cdn 使用宝塔控制面板，主要是容易，怎么装也不我用说了，需要两台服务器，一台源站一台CDN ##配置在CDN服务器上安装宝塔面板，环境安装Nginx，CDN服务器一定要对源站的访问起到加速作用，这个不用我说大家都懂编辑hosts文件添加你的源站IP、域名  例如 11.22.33.4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自建CDN加速站点">
+<meta property="og:url" content="https://www.scorain.com/09/15/cdn2/index.html">
+<meta property="og:site_name" content="天蝎雨">
+<meta property="og:description" content="自建CDN加速站点最近几天都是在优化站点访问速度，现在本站访问速度很快了，对我来说2秒加载完，本章是 关于如何自建cdn 使用宝塔控制面板，主要是容易，怎么装也不我用说了，需要两台服务器，一台源站一台CDN ##配置在CDN服务器上安装宝塔面板，环境安装Nginx，CDN服务器一定要对源站的访问起到加速作用，这个不用我说大家都懂编辑hosts文件添加你的源站IP、域名  例如 11.22.33.4">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2020/03/24/5eT6S8MJWQmsFj1.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/24/w83rhiBYqfRMASK.png">
+<meta property="article:published_time" content="2020-09-14T17:51:54.000Z">
+<meta property="article:modified_time" content="2020-09-14T17:56:48.000Z">
+<meta property="article:author" content="沐予之枫">
+<meta property="article:tag" content="天蝎雨,十月份的雨,沐予之枫">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/24/5eT6S8MJWQmsFj1.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                天蝎雨
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/categories/" class="navbar-menu button">
+                        分类
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/kms/" class="navbar-menu button">
+                        KMS
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/categories/" class="dropdown-menu button">
+                        分类
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/kms/" class="dropdown-menu button">
+                        KMS
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    requestAnimationFrame(() => {
+                        dd.style.display = 'flex';
+                        requestAnimationFrame(() => {
+                            dd.style.transform = 'translateY(0)';
+                            dd.style.opacity = '1';
+                        });
+                    });
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+<div class="post-title">
+    <h1 class="post-title__text">
+        自建CDN加速站点
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/09/" class="post-meta__date button">
+    2020-09-15
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%8A%98%E8%85%BE/" class="button">折腾</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header"></div>
+            <div class="post__content">
+                <h1 id="自建CDN加速站点"><a href="#自建CDN加速站点" class="headerlink" title="自建CDN加速站点"></a>自建CDN加速站点</h1><!--markdown-->最近几天都是在优化站点访问速度，现在本站访问速度很快了，对我来说2秒加载完，本章是 关于如何自建cdn
+<p>使用宝塔控制面板，主要是容易，怎么装也不我用说了，需要两台服务器，一台源站一台CDN</p>
+<p>##配置<br>在CDN服务器上安装宝塔面板，环境安装Nginx，CDN服务器一定要对源站的访问起到加速作用，这个不用我说大家都懂<br>编辑<code>hosts</code>文件添加你的源站IP、域名  例如</p>
+<p>11.22.33.44 <a href="http://www.scorain.com/">www.scorain.com</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
+<p>编辑完保存即可</p>
+<p>在宝塔面板<code>网站</code>栏目添加一个网站，域名填写你要加速的域名，但又需要非WWW跳转WWW域名只需要填写两个域名开启301跳转即可<br>如果是WWw访问非WWW同上操作，并修改<code>hosts</code>需要加速的域名为非WWW域名<br>其他环境都不需要<br><img src="https://i.loli.net/2020/03/24/5eT6S8MJWQmsFj1.png" alt="1"></p>
+<p>配置反向代理并开启缓存，如果有<code>https</code>目标URL要使用对应协议头，发送域名保持原状<br><img src="https://i.loli.net/2020/03/24/w83rhiBYqfRMASK.png" alt="2.png"></p>
+<p>##解析<br>到DNS提供商（域名提供商）解析你的域名到CDN服务器即可访问你的CDN缓存节点</p>
+<p>注：如果需要更新缓存需要使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yourdomain.com&#x2F;purge&#x2F;xxxx.html</span><br></pre></td></tr></table></figure>
+<p>来更新，在域名后面加purge/目标地址，例如我需要更新独立页面缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;scorain.com&#x2F;purge&#x2F;kms.html</span><br></pre></td></tr></table></figure>
+
+            </div>
+            
+    <div class="post__license">
+        <p>
+            <strong>Author: </strong>沐予之枫
+        </p>
+        <p>
+            <strong>
+                Permalink: 
+            </strong>
+            <a href="https://www.scorain.com/09/15/cdn2/">https://www.scorain.com/09/15/cdn2/</a>
+        </p>
+        
+            <strong>
+                <p>文章默认使用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议进行许可，使用时请注意遵守协议。</p>
+
+            </strong>
+        
+    </div>
+ 
+            <div class="post-footer__meta">
+    <p>
+        updated at 2020-09-15
+    </p>
+</div> 
+            <div class="post-meta__cats">
+    
+        <a href="/categories/%E6%8A%98%E8%85%BE/" class="post-cats__link button">折腾</a>
+    
+    
+</div> 
+        </article>
+        
+            <div class="post__comments content-card" id="comment">
+                
+    <h4>Comments</h4>
+    
+    
+    
+    <div id="valine_container" class="valine_thread"></div>
+
+    
+    
+    
+    
+    
+    
+
+
+            </div>
+        
+    </div>
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">天蝎雨</a>
+        </p>
+    
+    
+        
+            <p><img style="width:32px;height:32px;margin-bottom:-8px" src="https://i.loli.net/2020/11/06/c7KHCVLsF4watMQ.png"><a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=scorain.com">萌ICP备20201000号</a></p>
+
+        
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('[object Object]'),
+            auto_fancybox = Boolean('true')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+
+
+
+
+
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                var valineConfig = {"appId":"MXxiYav72dRtROzLv7qq0XUT-gzGzoHsz","appKey":"WLUjYTiwc1Ub0H4atksGIvs7","placeholder":null,"path":null,"avatar":null,"meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":null,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
+                valineConfig.el = '#valine_container';
+                for (var i in valineConfig) {
+                    if (valineConfig[i] === null) delete valineConfig[i];
+                }
+                new Valine(valineConfig);
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    </body>
+</html>

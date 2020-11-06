@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>QQ二次元搜图机器人 | 天蝎雨</title>
+
+
+    <meta name="keywords" content="天蝎雨,十月份的雨,沐予之枫">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="QQ二次元搜图机器人&#96;CQ-picfinder-robot&#96;插件由[神代綺凜](https:&#x2F;&#x2F;moe.best)使用nodejs编写（开源） 项目地址：Github该插件需要配合酷Q使用，并且需要启动CoolQ HTTP API插件，并将配置文件use_ws设置为true详情查看官方使用文档  这是一个以 Nodejs 编写的酷Q机器人插件，用于搜图、搜番、搜本子，并夹带了许多娱乐向功能  ##">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QQ二次元搜图机器人">
+<meta property="og:url" content="https://www.scorain.com/09/15/Sexbot/index.html">
+<meta property="og:site_name" content="天蝎雨">
+<meta property="og:description" content="QQ二次元搜图机器人&#96;CQ-picfinder-robot&#96;插件由[神代綺凜](https:&#x2F;&#x2F;moe.best)使用nodejs编写（开源） 项目地址：Github该插件需要配合酷Q使用，并且需要启动CoolQ HTTP API插件，并将配置文件use_ws设置为true详情查看官方使用文档  这是一个以 Nodejs 编写的酷Q机器人插件，用于搜图、搜番、搜本子，并夹带了许多娱乐向功能  ##">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2020/02/28/RDZA7TwFU1gNs4V.png">
+<meta property="article:published_time" content="2020-09-14T17:39:36.000Z">
+<meta property="article:modified_time" content="2020-09-14T17:58:37.000Z">
+<meta property="article:author" content="沐予之枫">
+<meta property="article:tag" content="天蝎雨,十月份的雨,沐予之枫">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/28/RDZA7TwFU1gNs4V.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                天蝎雨
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/categories/" class="navbar-menu button">
+                        分类
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/kms/" class="navbar-menu button">
+                        KMS
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/categories/" class="dropdown-menu button">
+                        分类
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/kms/" class="dropdown-menu button">
+                        KMS
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    requestAnimationFrame(() => {
+                        dd.style.display = 'flex';
+                        requestAnimationFrame(() => {
+                            dd.style.transform = 'translateY(0)';
+                            dd.style.opacity = '1';
+                        });
+                    });
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+<div class="post-title">
+    <h1 class="post-title__text">
+        QQ二次元搜图机器人
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/09/" class="post-meta__date button">
+    2020-09-15
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%8A%98%E8%85%BE/" class="button">折腾</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header"></div>
+            <div class="post__content">
+                <h1 id="QQ二次元搜图机器人"><a href="#QQ二次元搜图机器人" class="headerlink" title="QQ二次元搜图机器人"></a>QQ二次元搜图机器人</h1><!--markdown-->`CQ-picfinder-robot`插件由[神代綺凜](https://moe.best)使用nodejs编写（开源）
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/Tsuk1ko/CQ-picfinder-robot">Github</a><br>该插件需要配合<code>酷Q</code>使用，并且需要启动<code>CoolQ HTTP API</code>插件，并将配置文件<code>use_ws</code>设置为<code>true</code><br>详情查看<a target="_blank" rel="noopener" href="https://cqhttp.cc/docs/4.10/#/Configuration">官方使用文档</a><br><img src="https://i.loli.net/2020/02/28/RDZA7TwFU1gNs4V.png" alt="Screenshot_20200228-151211_QQ.png"></p>
+<blockquote>
+<p>这是一个以 Nodejs 编写的酷Q机器人插件，用于搜图、搜番、搜本子，并夹带了许多娱乐向功能</p>
+</blockquote>
+<p>##安装<br>###酷Q支持Docker一键配置，先安装Docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 6</span><br><span class="line">rpm -iUvh http:&#x2F;&#x2F;dl.fedoraproject.org&#x2F;pub&#x2F;epel&#x2F;6&#x2F;x86_64&#x2F;epel-release-6-8.noarch.rpm</span><br><span class="line">yum update -y</span><br><span class="line">yum -y install docker-io</span><br><span class="line">service docker start</span><br><span class="line">chkconfig docker on</span><br><span class="line"></span><br><span class="line">#CentOS 7、Debian、Ubuntu</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;get.docker.com&#x2F; | sh</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p>安装酷Q</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#酷QAir版</span><br><span class="line">docker run --name wine-coolq -d \</span><br><span class="line">-v &#x2F;coolq:&#x2F;home&#x2F;user&#x2F;coolq \</span><br><span class="line">-p 9000:9000 \</span><br><span class="line">-p 6700:6700 \</span><br><span class="line">-e VNC_PASSWD&#x3D;123456 \</span><br><span class="line">richardchien&#x2F;cqhttp</span><br><span class="line"></span><br><span class="line">#酷QPro版</span><br><span class="line">docker run --name wine-coolq -d \</span><br><span class="line">-v &#x2F;coolq:&#x2F;home&#x2F;user&#x2F;coolq \</span><br><span class="line">-p 9000:9000 \</span><br><span class="line">-p 6700:6700 \</span><br><span class="line">-e VNC_PASSWD&#x3D;123456 \</span><br><span class="line">-e COOLQ_URL&#x3D;https:&#x2F;&#x2F;dlsec.cqp.me&#x2F;cqp-tuling \</span><br><span class="line">richardchien&#x2F;cqhttp</span><br></pre></td></tr></table></figure>
+<p>###参数说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-p 将内部的Web运行端口9000映射到外部的9000，可自行修改端口。</span><br><span class="line">-v 将内部酷Q和其数据文件夹&#x2F;home&#x2F;user&#x2F;coolq映射到外部的&#x2F;coolq文件夹，可自行修改路径。</span><br><span class="line">-e VNC_PASSWD为VNC密码。注意该密码不能超过8个字符，默认123456。</span><br></pre></td></tr></table></figure>
+<p>删除默认配置，使用特定配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf &#x2F;coolq&#x2F;app&#x2F;io.github.richardchien.coolqhttpapi&#x2F;config&#x2F;general.ini</span><br></pre></td></tr></table></figure>
+<p>访问<code>VNC</code>地址配置机器人,<code>http://ip:9000</code>输入密码，默认<code>123456</code><br>第一次登陆QQ会生成配置文件，先进行修改<code>/coolq/app/io.github.richardchien.coolqhttpapi/config</code>目录下的<code>你的qq.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">将use_ws后面的false改为true</span><br><span class="line">#SSH客户端直接修改</span><br><span class="line">sed -i &#39;s#&quot;use_ws&quot;: false#&quot;use_ws&quot;: true#g&#39; &#x2F;coolq&#x2F;app&#x2F;io.github.richardchien.coolqhttpapi&#x2F;config&#x2F;*.json</span><br></pre></td></tr></table></figure>
+<p>安装Nodejs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#Debian&#x2F;Ubuntu系统</span><br><span class="line">curl -sL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_10.x | bash -</span><br><span class="line">apt install -y git nodejs </span><br><span class="line"></span><br><span class="line">#CentOS系统</span><br><span class="line">curl -sL https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x | bash -</span><br><span class="line">yum install nodejs git -y</span><br></pre></td></tr></table></figure>
+<p>安装CQ-picfinder-robot</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#拉取项目</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;Tsuk1ko&#x2F;CQ-picfinder-robot.git</span><br><span class="line">cd CQ-picfinder-robot</span><br><span class="line">#复制配置文件</span><br><span class="line">cp config.default.json config.json</span><br><span class="line">#安装依赖</span><br><span class="line">npm i</span><br><span class="line">#安装pm2</span><br><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<p><code>config.json</code>配置文件参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">#别直接将下面配置文件复制进去，JSON是不允许注释的，仅供参考</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;前面这几项配置请参考https:&#x2F;&#x2F;github.com&#x2F;momocow&#x2F;node-cq-websocket&#x2F;blob&#x2F;master&#x2F;docs&#x2F;api&#x2F;CQWebSocket.md#cqwebsocketoption</span><br><span class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;port&quot;: 6700,</span><br><span class="line">    &quot;enableAPI&quot;: true,</span><br><span class="line">    &quot;enableEvent&quot;: true,</span><br><span class="line">    &quot;access_token&quot;: &quot;&quot;,</span><br><span class="line">    &quot;reconnection&quot;: true,</span><br><span class="line">    &quot;reconnectionAttempts&quot;: 10,</span><br><span class="line">    &quot;reconnectionDelay&quot;: 5000,</span><br><span class="line">    &#x2F;&#x2F;以下开始都是搜图机器人配置</span><br><span class="line">    &quot;picfinder&quot;: &#123;</span><br><span class="line">        &quot;debug&quot;: false,            &#x2F;&#x2F;调试模式，启用后会在控制台输出每次查询的返回文本</span><br><span class="line">        &quot;admin&quot;: -1,               &#x2F;&#x2F;指定管理者QQ，请务必设置</span><br><span class="line">        &quot;autoAddFriend&quot;: false,    &#x2F;&#x2F;自动同意好友申请（false则忽略，但不会拒绝）</span><br><span class="line">        &quot;addFriendAnswers&quot;: [],    &#x2F;&#x2F;根据问题回答同意好友申请（后续详解</span><br><span class="line">        &quot;autoAddGroup&quot;: false,     &#x2F;&#x2F;自动同意入群申请（false同上，但可以用命令手动允许，后续有说明）</span><br><span class="line">        &quot;searchLimit&quot;: 30,         &#x2F;&#x2F;每名用户每日搜索次数限制</span><br><span class="line">        &#x2F;&#x2F;复读机</span><br><span class="line">        &quot;repeat&quot;: &#123;</span><br><span class="line">            &quot;enable&quot;: true,        &#x2F;&#x2F;开关</span><br><span class="line">            &quot;times&quot;: 3,            &#x2F;&#x2F;当检测到某个群有这么多次相同发言后会概率参与复读</span><br><span class="line">            &quot;probability&quot;: 40,     &#x2F;&#x2F;复读概率（百分比）</span><br><span class="line">            &quot;commonProb&quot;: 0.1      &#x2F;&#x2F;日常复读概率（百分比）</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F;setu功能</span><br><span class="line">        &quot;setu&quot;: &#123;</span><br><span class="line">            &quot;enable&quot;: false,       &#x2F;&#x2F;是否启用</span><br><span class="line">            &quot;allowPM&quot;: true,       &#x2F;&#x2F;是否允许私聊使用</span><br><span class="line">            &quot;pximgProxy&quot;: &quot;&quot;,      &#x2F;&#x2F;设置发送setu时使用的反向代理，后续详解</span><br><span class="line">            &quot;deleteTime&quot;: 30,      &#x2F;&#x2F;发送后这么多秒自动撤回（0则不撤回，下同）</span><br><span class="line">            &quot;cd&quot;: 600,             &#x2F;&#x2F;使用冷却时间（秒），每名用户独立，0则无冷却</span><br><span class="line">            &quot;limit&quot;: 30,           &#x2F;&#x2F;每名用户每日次数限制</span><br><span class="line">            &quot;whiteGroup&quot;: [],      &#x2F;&#x2F;群组白名单（请按照json数组格式填写）</span><br><span class="line">            &quot;whiteOnly&quot;: false,    &#x2F;&#x2F;仅允许白名单群使用（与上面的私聊使用是独立的）</span><br><span class="line">            &quot;whiteCd&quot;: 0,          &#x2F;&#x2F;白名单群组的使用冷却时间</span><br><span class="line">            &quot;whiteDeleteTime&quot;: 0   &#x2F;&#x2F;白名单群组的撤回时间</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F;指令正则表达式</span><br><span class="line">        &quot;regs&quot;: &#123;</span><br><span class="line">            &#x2F;&#x2F;开启搜图模式</span><br><span class="line">            &quot;searchModeOn&quot;: &quot;竹竹搜[图圖]&quot;,</span><br><span class="line">            &#x2F;&#x2F;关闭搜图模式</span><br><span class="line">            &quot;searchModeOff&quot;: &quot;[谢謝]+竹竹&quot;,</span><br><span class="line">            &#x2F;&#x2F;签到</span><br><span class="line">            &quot;sign&quot;: &quot;我(.*)签到&quot;,</span><br><span class="line">            &#x2F;&#x2F;setu</span><br><span class="line">            &quot;setu&quot;: &quot;(竹竹.*[来來发發给給].*[色瑟][图圖])|(--setu)&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F;回复</span><br><span class="line">        &quot;replys&quot;: &#123;</span><br><span class="line">            &#x2F;&#x2F;默认回复</span><br><span class="line">            &quot;default&quot;: &quot;必须要发送图片我才能帮你找噢_(:3」」\n支持批量！&quot;,</span><br><span class="line">            &#x2F;&#x2F;调试模式时</span><br><span class="line">            &quot;debug&quot;: &quot;维护升级中，暂时不能使用，抱歉啦~&quot;,</span><br><span class="line">            &#x2F;&#x2F;个人搜索次数到达上限时</span><br><span class="line">            &quot;personLimit&quot;: &quot;您今天搜的图太多辣！休息一下明天再来搜吧~&quot;,</span><br><span class="line">            &#x2F;&#x2F;搜索失败时</span><br><span class="line">            &quot;failed&quot;: &quot;搜索失败惹 QAQ\n有可能是服务器网络爆炸，请重试一次&quot;,</span><br><span class="line">            &#x2F;&#x2F;签到相关</span><br><span class="line">            &quot;sign&quot;: &quot;签到成功，送您10个赞！&quot;,</span><br><span class="line">            &quot;signed&quot;: &quot;您今天已经签到过啦_(:3」∠)_&quot;,</span><br><span class="line">            &#x2F;&#x2F;开启搜图模式</span><br><span class="line">            &quot;searchModeOn&quot;: &quot;了解～请发送图片吧！支持批量噢！\n如想退出搜索模式请发送“谢谢竹竹”&quot;,</span><br><span class="line">            &#x2F;&#x2F;已经开启搜图模式</span><br><span class="line">            &quot;searchModeAlreadyOn&quot;: &quot;您已经在搜图模式下啦！\n如想退出搜索模式请发送“谢谢竹竹”&quot;,</span><br><span class="line">            &#x2F;&#x2F;关闭搜图模式</span><br><span class="line">            &quot;searchModeOff&quot;: &quot;不用谢～&quot;,</span><br><span class="line">            &#x2F;&#x2F;已经关闭搜图模式</span><br><span class="line">            &quot;searchModeAlreadyOff&quot;: &quot;にゃ～&quot;,</span><br><span class="line">            &#x2F;&#x2F;setu冷却中</span><br><span class="line">            &quot;setuLimit&quot;: &quot;乖，要懂得节制噢 →_→&quot;,</span><br><span class="line">            &#x2F;&#x2F;setu请求错误</span><br><span class="line">            &quot;setuError&quot;: &quot;瑟图服务器爆炸惹_(:3」∠)_&quot;,</span><br><span class="line">            &#x2F;&#x2F;其他不满足发送setu的条件</span><br><span class="line">            &quot;setuReject&quot;: &quot;很抱歉，该功能暂不开放_(:3」」&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F;OCR（详细见“附加功能”）</span><br><span class="line">        &quot;ocr&quot;: &#123;</span><br><span class="line">            &quot;use&quot;: &quot;ocr.space&quot;, &#x2F;&#x2F;选择使用的OCR服务</span><br><span class="line">            &quot;ocr.space&quot;: &#123;</span><br><span class="line">                &quot;defaultLANG&quot;: &quot;eng&quot;,</span><br><span class="line">                &quot;apikey&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;baidubce&quot;: &#123;</span><br><span class="line">                &quot;useApi&quot;: &quot;accurate_basic&quot;,</span><br><span class="line">                &quot;apiKey&quot;: &quot;&quot;,</span><br><span class="line">                &quot;secretKey&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F;明日方舟公开招募计算器（详细见“附加功能”）</span><br><span class="line">        &quot;akhr&quot;: &#123;</span><br><span class="line">            &quot;enable&quot;: false,    &#x2F;&#x2F;true则启用</span><br><span class="line">            &quot;ocr&quot;: &quot;ocr.space&quot;  &#x2F;&#x2F;选择使用的OCR服务</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F;数据库配置（用于缓存搜图结果）</span><br><span class="line">    &quot;mysql&quot;: &#123;</span><br><span class="line">        &quot;enable&quot;: false,       &#x2F;&#x2F;是否开启缓存功能</span><br><span class="line">        &quot;expire&quot;: 172800,      &#x2F;&#x2F;缓存时间（秒），默认为两天（172800秒）</span><br><span class="line">        &quot;host&quot;: &quot;127.0.0.1&quot;,   &#x2F;&#x2F;数据库地址</span><br><span class="line">        &quot;port&quot;: 3306,          &#x2F;&#x2F;端口</span><br><span class="line">        &quot;db&quot;: &quot;&quot;,              &#x2F;&#x2F;数据库名</span><br><span class="line">        &quot;user&quot;: &quot;&quot;,            &#x2F;&#x2F;用户名</span><br><span class="line">        &quot;password&quot;: &quot;&quot;,        &#x2F;&#x2F;密码</span><br><span class="line">        &quot;expire&quot;: 172800       &#x2F;&#x2F;缓存时间</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F;Saucenao地址，一般请不要动，除非你猜到了我提供此设置的意义（</span><br><span class="line">    &quot;saucenaoHost&quot;: [</span><br><span class="line">        &quot;saucenao.com&quot;</span><br><span class="line">    ],</span><br><span class="line">    &#x2F;&#x2F;WhatAnime的域名，同上</span><br><span class="line">    &quot;whatanimeHost&quot;: [</span><br><span class="line">        &quot;trace.moe&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置完成之后cd到插件目录使用指令启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#启动</span><br><span class="line">npm run pm2start</span><br><span class="line">#停止</span><br><span class="line">npm run pm2stop</span><br><span class="line">#重启</span><br><span class="line">npm run pm2restart</span><br><span class="line">#查看日志</span><br><span class="line">npm run pm2log</span><br></pre></td></tr></table></figure>
+
+<p>##使用<br><strong>日常使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#私聊</span><br><span class="line">1、直接发送图片即可</span><br><span class="line">2、详见下方搜图模式说明</span><br><span class="line"></span><br><span class="line">#群组&amp;讨论组</span><br><span class="line">1、@机器人并发送图片</span><br><span class="line">2、详见下方搜图模式说明(群限定)</span><br><span class="line">3、特别地，在群组中可以发送符合配置中正则表达式的发言以进入搜图模式，在搜图模式中，发送的所有图片即使不@也会被搜图，此功能通常用于在手机上无法在转发图片时@的情况；另外，进入搜图模式后也请务必记得退出搜图模式！</span><br><span class="line"></span><br><span class="line">#可以在同一条消息中包含多张图片(针对PC)，会自动批量搜索</span><br><span class="line"></span><br><span class="line">#搜索图片时可以在消息内包含以下参数来指定搜索范围或者使用某项功能，参数之间互斥，优先级从上到下</span><br><span class="line">1、--get-url：获取图片的在线链接（不会搜图）</span><br><span class="line">2、--a2d：使用 ascii2d 进行搜索（优势在于可搜索局部图）</span><br><span class="line">3、--pixiv：从P站中搜索</span><br><span class="line">4、--danbooru：从Danbooru中搜索</span><br><span class="line">5、--book：搜索本子</span><br><span class="line">6、--anime：搜索番剧</span><br><span class="line"></span><br><span class="line">#如果saucenao得到的结果相似度低于60%，会自动使用ascii2d进行搜索</span><br><span class="line"></span><br><span class="line">#如果搜索到本子，会自动在 nhentai 中搜索并返回链接(如果有汉化本会优先返回汉化本链接)</span><br><span class="line"></span><br><span class="line">#如果搜到番剧，会自动使用WhatAnime搜索番剧详细信息</span><br><span class="line">1、AnimeDB与WhatAnime的结果可能会不一致，是正常现象，毕竟这是两个不同的搜索引擎</span><br><span class="line">2、同时展示这两个搜索的目的是为了尽力得到你可能想要的识别结果</span><br><span class="line">2、搜图模式</span><br></pre></td></tr></table></figure>
+<p><strong>搜图模式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#搜图模式存在的意义是方便手机用户在转发图片等不方便在消息中夹带@或搜图参数的情况下指定搜索库</span><br><span class="line"></span><br><span class="line">#在私聊时直接发送图库关键字</span><br><span class="line">此时你发出来的下一张图（只有下一张，也就是一次性的）会使用指定搜索库</span><br><span class="line"></span><br><span class="line">#在群组中发送符合配置中正则表达式的发言进入搜图模式</span><br><span class="line">1、此时你发出的所有图片都会被搜图（默认使用全范围搜索）</span><br><span class="line">2、发送图库关键字后，你后续发出的所有图片都会使用你指定的搜索库</span><br><span class="line">3、每次使用完后请务必记得退出搜图模式啊，同理，也是发送符合配置中正则表达式的发言</span><br><span class="line"></span><br><span class="line">#图库关键字：</span><br><span class="line">1、all：默认的全范围搜索模式</span><br><span class="line">2、以下与上方“日常使用”中描述的搜索参数功能相同</span><br><span class="line">pixiv</span><br><span class="line">danbooru</span><br><span class="line">book</span><br><span class="line">anime</span><br></pre></td></tr></table></figure>
+<p><strong>处理好友申请</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#如果在QQ中设置选择“允许任何人”，则直接通过，酷Q无法干预</span><br><span class="line"></span><br><span class="line">#如果选择“需要验证信息”，则是否通过由autoAddFriend设置项决定</span><br><span class="line"></span><br><span class="line">#如果选择“需要正确回答问题”，则是否通过由对方的回答决定，酷Q无法干预</span><br><span class="line"></span><br><span class="line">#如果选择“需要回答问题并由我确认”，则在autoAddFriend为true，且addFriendAnswers数组不为空的情况下会进行判断，只有对方的回答与addFriendAnswers的设置完全一致才会同意</span><br></pre></td></tr></table></figure>
+<p><code>autoAddFriend</code>为<code>false</code>时不会主动拒绝申请，只是忽略申请而已，<code>autoAddGroup</code>同理。<br><code>addFriendAnswers</code>配置规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#请将问题的答案顺次作为addFriendAnswers数组的元素写入，例：</span><br><span class="line">&quot;addFriendAnswers&quot;: [</span><br><span class="line">    &quot;问题一的答案&quot;,</span><br><span class="line">    &quot;问题二的答案&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><strong>手动加群</strong><br>当你设定了<code>picfinder.admin</code>为你自己的QQ后，假如<code>123456789</code>是你需要让机器人加的群，向机器人私聊发送<code>--add-group=123456789</code>，此时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#如果该群之前已经在机器人处于运行状态的时候邀请过机器人，那么该邀请会被直接同意</span><br><span class="line"></span><br><span class="line">#如果之前没有邀请过，那么下一次邀请将会被同意</span><br><span class="line"></span><br><span class="line">#以上两种操作都是一次性的</span><br></pre></td></tr></table></figure>
+
+<p><strong>封禁用户/群组</strong><br>发送–ban-u=Q号或–ban-g=群号，该封禁功能并不是真的拉入黑名单，仅仅是忽略用户/群的发言，如果想解封请自行编辑data/ban.json删除对应Q号/群号。</p>
+<p>更多配置查看<a target="_blank" rel="noopener" href="https://github.com/Tsuk1ko/CQ-picfinder-robot#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8">github</a></p>
+<p>##说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#为什么有时候搜不想要的出结果？</span><br><span class="line">需要说明的是，搜图引擎发现新图片并收录也是需要时间的，因此画师刚上传的画作一般情况下是没办法搜到的</span><br><span class="line"></span><br><span class="line">另外，搜图时发送的图片必须是刚好完整的图片，使用以下几种情况的图片会导致大概率搜不到结果：</span><br><span class="line">1、使用的是原图的局部图，即因剪裁而不完整，此时可以尝试使用ascii2d的特征搜索功能</span><br><span class="line">2、图片被 马赛克&#x2F;图片马赛克等 遮挡的部分面积过大</span><br><span class="line">3、截图没截好，留有黑边，例如为了省事直接使用手机截屏或者电脑手动框选截图，这种情况请在搜图前4自行编辑裁去与图片无关的部分</span><br><span class="line">4、清晰度过低的图片</span><br></pre></td></tr></table></figure>
+<p>每次重启Docker都会生成<code>general.ini</code>，其文件会使特定文件失效，需要将文件删除，也可以在安装Docker镜像的时候加入变量<code>-e COOLQ_ACCOUNT=123456</code>来解决这个问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker restart wine-coolq</span><br><span class="line">rm -rf &#x2F;coolq&#x2F;app&#x2F;io.github.richardchien.coolqhttpapi&#x2F;config&#x2F;general.ini</span><br></pre></td></tr></table></figure>
+
+<p>Docker启动指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start wine-coolq</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+            
+    <div class="post__license">
+        <p>
+            <strong>Author: </strong>沐予之枫
+        </p>
+        <p>
+            <strong>
+                Permalink: 
+            </strong>
+            <a href="https://www.scorain.com/09/15/Sexbot/">https://www.scorain.com/09/15/Sexbot/</a>
+        </p>
+        
+            <strong>
+                <p>文章默认使用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议进行许可，使用时请注意遵守协议。</p>
+
+            </strong>
+        
+    </div>
+ 
+            <div class="post-footer__meta">
+    <p>
+        updated at 2020-09-15
+    </p>
+</div> 
+            <div class="post-meta__cats">
+    
+        <a href="/categories/%E6%8A%98%E8%85%BE/" class="post-cats__link button">折腾</a>
+    
+    
+</div> 
+        </article>
+        
+            <div class="post__comments content-card" id="comment">
+                
+    <h4>Comments</h4>
+    
+    
+    
+    <div id="valine_container" class="valine_thread"></div>
+
+    
+    
+    
+    
+    
+    
+
+
+            </div>
+        
+    </div>
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">天蝎雨</a>
+        </p>
+    
+    
+        
+            <p><img style="width:32px;height:32px;margin-bottom:-8px" src="https://i.loli.net/2020/11/06/c7KHCVLsF4watMQ.png"><a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=scorain.com">萌ICP备20201000号</a></p>
+
+        
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('[object Object]'),
+            auto_fancybox = Boolean('true')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+
+
+
+
+
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                var valineConfig = {"appId":"MXxiYav72dRtROzLv7qq0XUT-gzGzoHsz","appKey":"WLUjYTiwc1Ub0H4atksGIvs7","placeholder":null,"path":null,"avatar":null,"meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":null,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
+                valineConfig.el = '#valine_container';
+                for (var i in valineConfig) {
+                    if (valineConfig[i] === null) delete valineConfig[i];
+                }
+                new Valine(valineConfig);
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    </body>
+</html>
